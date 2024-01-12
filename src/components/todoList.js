@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import TodoForm from './todoForm';
+import TodoForm from './TodoForm';
+import Todo from './todo';
 
 function Todolist() {
     const [todos, setTodos] = useState([]);
 
     const addTodo = todo => {
-        if (!todo.text || /^\s*$/.text(todo.text)) {
-            return
+        if (!todo.text || /^\s*$/.test(todo.text)) {
+            return;
         }
 
-        const newTodos = [todo, ...todos]
+        const newTodos = [todo, ...todos];
 
-        setTodos(newTodos)
-        console.log(...todos);
-    }
+        setTodos(newTodos);
+    };
 
     return (
         <div>
             <h1>What's the Plan for Today?</h1>
-            <TodoForm />
+            <TodoForm onSubmit={addTodo} />
+            <Todo />
         </div>
     );
 }
